@@ -1,35 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Eid Mubarak</title>
-<link rel="stylesheet" href="style.css">
+
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish Letter Box Flow</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    padding: 50px;
+}
+
+/* Stylish Letter Box */
+.letter-box {
+    width: 320px;
+    height: 360px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #fff, #e0e0e0);
+    border-radius: 20px;
+    box-shadow: 8px 8px 15px rgba(0,0,0,0.2), -8px -8px 15px rgba(255,255,255,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.letter-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Images */
+.letter-box img {
+    max-width: 90%;
+    max-height: 220px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(0,0,0,0.1);
+    display: none; /* hidden initially */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: opacity 0.5s;
+}
+
+/* Button */
+.letter-box button {
+    padding: 10px 25px;
+    font-size: 16px;
+    border: none;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.letter-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Letter text */
+#letter-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+</style>
+</head>
 <body>
-<div class="container">
 
-<h1><i><b><🌙 Eid Mubarak 🌙</b></i></h1>
 
-<p>M Allfill your life with joy and success.</p>
+    <body style="background: url('https://i.pinimg.com/originals/3e/5c/d6/3e5cd64b33cd1b71cfb8b73d2ff1ec4f.gif') center/cover no-repeat fixed;"></body>
 
-<h2>✨ From Ali Haider ✨</h2>
+
+
 
 <div class="letter-box">
-    <button id="openBtn" onclick="openLetter()">Click to open</button>
-    <div id="letterContent" style="display: none;">
-        <p>🌙✨ EID MUBARAK! ✨🌙</p>
-        <p>💫 Wishing you a blessed Eid filled with joy, love, and mercy. May Allah bless you and your family with happiness and success. 💫</p>
-        <p>❤️ With Warm Regards, Ali Haider ❤️</p>
-    </div>
-</div>
-
+    <p id="letter-text">You received a special letter! 📬</p>
+    <img id="slide-image" src="" alt="Slide Image">
+    <button id="action-btn">Open</button>
 </div>
 
 <script>
-function openLetter() {
-    document.getElementById('openBtn').style.display = 'none';
-    document.getElementById('letterContent').style.display = 'block';
-}
+// Images array
+const images = ["image.jfif", "download (2).jfif", "Motto.jfif","download (3).jfif","image3.jfif","download (6).jfif","download (5).jfif","download (2).gif", "Big Hug.jfif"]; // replace with your image paths
+let step = 0;
+
+const slideImage = document.getElementById("slide-image");
+const actionBtn = document.getElementById("action-btn");
+const letterText = document.getElementById("letter-text");
+
+actionBtn.addEventListener("click", () => {
+    if(step === 0){
+        slideImage.src = images[0];
+        slideImage.style.display = "block";
+        slideImage.style.opacity = 0;
+        setTimeout(() => slideImage.style.opacity = 1, 50); // fade effect
+        letterText.textContent = "Here’s the first surprise! 🎉";
+        actionBtn.textContent = "Next";
+        step++;
+    } else if(step < images.length){
+        slideImage.src = images[step];
+        slideImage.style.opacity = 0;
+        setTimeout(() => slideImage.style.opacity = 1, 50); // fade effect
+        letterText.textContent = `Here’s surprise ${step + 1}! ✨`;
+        step++;
+        if(step === images.length){
+            actionBtn.style.display = "none";
+            letterText.textContent = "Hope you enjoyed all surprises! ❤️";
+        }
+    }
+});
 </script>
 
 </body>
