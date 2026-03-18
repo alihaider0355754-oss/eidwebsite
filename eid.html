@@ -129,10 +129,9 @@ actionBtn.addEventListener("click", () => {
 
 <body>
 
-<!-- YAHAN BUTTON + VIDEO -->
 <button onclick="playVideo()">Play Video 🎬</button>
 
-<video id="myVideo" width="100%" style="display:none;">
+<video id="myVideo" width="100%" controls style="display:none;">
   <source src="brosislove.mp4" type="video/mp4">
 </video>
 
@@ -140,16 +139,28 @@ actionBtn.addEventListener("click", () => {
   ⬅ Back
 </button>
 
-<!-- BODY KHATAM HONY SY PEHLY SCRIPT -->
 <script>
-/* javascript yahan */
+function playVideo() {
+  let video = document.getElementById("myVideo");
+  let back = document.getElementById("backBtn");
+
+  video.style.display = "block";
+  back.style.display = "inline";
+  video.play();
+}
+
+function goBack() {
+  let video = document.getElementById("myVideo");
+  let back = document.getElementById("backBtn");
+
+  video.pause();
+  video.currentTime = 0;
+  video.style.display = "none";
+  back.style.display = "none";
+}
 </script>
 
-
-    
 </body>
-
-
 
 
 
